@@ -183,6 +183,5 @@ class SensorController extends Controller {
         }
 
         return view('sensors.monitor')->with(array('sensor' => $sensor));
-		
     }
 }

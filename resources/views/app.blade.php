@@ -116,7 +116,7 @@
     </style>
     <footer class="footer">
       <div class="container" style="width: 100%;">
-        <p class="text-muted text-center">Copyright <a target="_blank" href="http://github.com/omiltoro" style="color: #bbbbbb">Patrick Limo</a> &copy; {{ date('Y') }}.</p>
+        <p class="text-muted text-center">Copyright <a target="_blank" href="http://silviosimunic.com/" style="color: #bbbbbb">Silvio Simunic</a> &copy; {{ date('Y') }}.</p>
       </div>
     </footer>
 

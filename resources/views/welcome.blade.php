@@ -13,7 +13,7 @@
             <h1>{{ env('WEBNAME') }}</h1>
             <p class="lead">Internet of Things data platform for temperature and humidity sensors with maps</p>
             <br>
-            <iframe src="https://ghbtns.com/github-btn.html?user=omiltoro&repo=Real-time-monitoring-for-crop-disease-detection=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=ssimunic&repo=Temp-Monitor&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
             <br><br>
             <hr>
         </div>
