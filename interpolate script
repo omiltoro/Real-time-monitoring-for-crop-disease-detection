@@ -1,0 +1,44 @@
+require("readr")
+require("lubridate")
+require("forecast")
+# import and rename columns on import, ignoring current names in file
+station_data <-
+  readr::read_csv(
+    "C:\\Users\\Patrick\\Desktop\\P.csv",
+    col_names = c("stationID", "datetime", "temperature", "relativeHumidity"),
+    skip = 1
+  )
+# check the dataframe
+summary(station_data)
+station_data[station_data == -9999.00] <- NA
+t <- as.ts(station_data$temperature)
+station_data$t <- forecast::na.interp(t)
+
+rh <- as.ts(station_data$relativeHumidity)
+station_data$rh <- forecast::na.interp(rh)
+
+station_data <- as.data.frame(c(station_data, t, rh))
+# Extract date/time bits
+station_data$year <- year(station_data$datetime)
+station_data$month <- month(station_data$datetime)
+station_data$day <- day(station_data$datetime)
+station_data$hour <- hour(station_data$datetime)
+
+# drop first six rows since they are .5 hourly not hourly
+station_data <- station_data[6:nrow(station_data), ]
+
+# drop the original data with missing values
+station_data <- station_data[, -c(3:4)]
+
+# rearrange into the order that the "01 - SimCast_Blight_Units.R expects"
+station_data <-
+  station_data[c("stationID",
+                 "year",
+                 "month",
+                 "day",
+                 "hour",
+                 "t",
+                 "rh")]
+
+# write new file to disk in format for use with "01 - SimCast_Blight_Units.R expects"
+write_tsv(station_data, path = "C:\\Users\\Patrick\\Desktop\\Pk.csv")
